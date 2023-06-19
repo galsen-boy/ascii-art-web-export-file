@@ -49,6 +49,7 @@ func SubmitTing(res http.ResponseWriter, req *http.Request) {
 		error500(res)
 		return
 	}
+	
 	txt := req.FormValue("input")
 	ban := req.FormValue("banner")
 
@@ -70,16 +71,16 @@ func SubmitTing(res http.ResponseWriter, req *http.Request) {
 
 	// processus pour telecharger le texte ascii-art dans un fichier
 	
-	c := ConvertStr(txt, ban)
-	fich1 := os.WriteFile("asciiResult.doc", []byte(c), 0644)
+	out := ConvertStr(txt, ban)
+	fich1 := os.WriteFile("asciiResult.doc", []byte(out), 0644)
 	if fich1 != nil {
 		error500(res)
 	}
-	fich2 := os.WriteFile("asciiResult.txt", []byte(c), 0644)
+	fich2 := os.WriteFile("asciiResult.txt", []byte(out), 0644)
 	if fich2 != nil {
 	error500(res)
 	}
-	fich3 := os.WriteFile("asciiResult.pdf", []byte(c), 0644)
+	fich3 := os.WriteFile("asciiResult.pdf", []byte(out), 0644)
 	if fich3 != nil {
 		error500(res)
 	}
