@@ -3,8 +3,6 @@ package main
 import (
 	"strconv"
 	"io"
-	// "strings"
-	// "bufio"
 	"os"
 	"net/http"
 	"text/template"
@@ -72,13 +70,13 @@ func SubmitTing(res http.ResponseWriter, req *http.Request) {
 	// processus pour telecharger le texte ascii-art dans un fichier
 	
 	out := ConvertStr(txt, ban)
-	fich1 := os.WriteFile("asciiResult.doc", []byte(out), 0644)
+	fich1 := os.WriteFile("asciiResult.txt", []byte(out), 0644)
 	if fich1 != nil {
-		error500(res)
-	}
-	fich2 := os.WriteFile("asciiResult.txt", []byte(out), 0644)
-	if fich2 != nil {
 	error500(res)
+	}
+	fich2 := os.WriteFile("asciiResult.doc", []byte(out), 0644)
+	if fich2 != nil {
+		error500(res)
 	}
 	fich3 := os.WriteFile("asciiResult.pdf", []byte(out), 0644)
 	if fich3 != nil {
@@ -105,4 +103,10 @@ func SubmitTing(res http.ResponseWriter, req *http.Request) {
 		res.Header().Set("Content-Type", "text/html")
 		res.Header().Set("Content-Length", sfSize)
 		io.Copy(res, f)
+		
 	}
+
+
+
+
+	
