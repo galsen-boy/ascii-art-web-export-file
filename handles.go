@@ -1,11 +1,8 @@
 package main
 
 import (
-	
 	"strconv"
 	"io"
-	// "strings"
-	// "bufio"
 	"os"
 	"net/http"
 	"text/template"
@@ -33,6 +30,7 @@ func SubmitTing(res http.ResponseWriter, req *http.Request) {
 	if req.FormValue("sub")=="sub" {
 		check1=true
 	}
+	
 	if req.Method != "POST" {
 		error405(res)
 		return
@@ -99,14 +97,7 @@ func download(res http.ResponseWriter, req *http.Request) {
 		check2=true
 	}
 	if check1 && check2 {
-
-
-
 	formatType := req.FormValue("fileformat")
-	// if formatType == "" {
-	// 	error500(res)
-	// 	return
-	// }
 
 	filename := "./data/result." + formatType
 
@@ -133,6 +124,8 @@ func download(res http.ResponseWriter, req *http.Request) {
 	f.Seek(0, io.SeekStart)
 	// Transmission du contenu du fichier
 	io.Copy(res, f)
+	}else{
+		error400(res)
 	}
 }
 
