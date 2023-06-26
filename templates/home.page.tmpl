@@ -23,8 +23,8 @@
       
       form.result .button {
           padding: 10px 20px;
-          background-color: #4CAF50;
-          color: white;
+          background-color: #eef7ee;
+          color: rgb(15, 1, 1);
           border: none;
           cursor: pointer;
           margin-right: 10px;
@@ -47,10 +47,19 @@
           text-align: center;
           margin-top: 20px;
       }
+      div {
+  background: linear-gradient(to right, #9a77d1, #080805);
+  opacity: 2;
+}
+body{
+    background-color: rgba(71, 15, 87, 0.712);
+    color: white;
+}
   </style>
-  <title>ASCII-ART-WEB</title>
+  <title >ASCII-ART-WEB</title>
 </head>
 <body>
+    <h1 align="center">ASCII-ART-WEB-EXPORTFILE</h1>
   <form class="result" action="ascii-art" method="POST">
     <label for="select">Banner</label><br>
         <select name="banner">
@@ -59,7 +68,7 @@
             <option value="thinkertoy">thinkertoy</option>
         </select><br><br>
     <textarea name="input" required placeholder="type something" rows="7" cols="80"></textarea>
-    <button class="button" type="submit" value="submit">submit</button>
+    <button name="sub" class="button" type="submit" value="sub">submit</button>
     <input class="button" type="reset" name="reset" value="Clear">
   </form>
  <div class="result">
@@ -67,7 +76,7 @@
     </div>
 
 
- <form id="formatselection" action="/down" method="POST">
+ <form id="formatselection" action="/down" method="POST" target="_blank">
         <div>
         <p>Select file type</p>
         <input type="radio" id="txt" name="fileformat" value="txt" checked>
@@ -76,7 +85,8 @@
         <label for="doc">doc</label><br>
          <input type="radio" id="pdf" name="fileformat" value="pdf">
         <label for="pdf">pdf</label><br>
-        <button class="button">Download</button>
+        <button name="telecharge" class="button" value="telecharge">Download</button>
+        
      </div>
   </form>
 
