@@ -94,10 +94,6 @@ func SubmitTing(res http.ResponseWriter, req *http.Request) {
 
 	out = ConvertStr(txt, ban)
 
-	// Afficher le résultat dans le template
-	// res.WriteHeader(200)
-	// tpl.Execute(res, out)
-
 }
 
 func download(res http.ResponseWriter, req *http.Request) {

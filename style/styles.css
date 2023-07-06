@@ -7,12 +7,10 @@ body{
 .element{
   min-width: 400px;
 }
-
 .form-items{
   text-align: center;
   align-content: center;
   border-radius: 6px;
-
 }
 textarea {
   width: 25%;
@@ -20,7 +18,7 @@ textarea {
   resize: none;
 }
 button{
-  width: 40%;
+  width: 35%;
   padding: 8px;
   white-space: nowrap;
   overflow: hidden;
@@ -30,7 +28,7 @@ button{
 }
 .btn{
   display: flex;
-  width: 45%;
+  width: 30%;
   justify-content: center;
   margin-left: 28%;
 }
@@ -45,20 +43,16 @@ select{
   padding: 10px;
   background-color:gray;
 }
-
 .menu {
   list-style: none; /* Supprime les puces de la liste */
   display: flex; /* Utilise un conteneur flex pour aligner les éléments de la liste sur la même ligne */
 }
-
 .menu li {
   margin-right: 10px; /* Ajoute un espacement horizontal entre les éléments de la liste */
 }
-
 .menu li:last-child {
   margin-right: auto; /* Supprime la marge de droite pour le dernier élément de la liste */
 }
-
 .menu li a {
   text-decoration:double; /* Supprime la décoration de lien par défaut */
   color: #000; /* Définit la couleur du texte pour les liens */
@@ -66,13 +60,11 @@ select{
 h1{
   margin: 0;
 }
-
 .container {
   display: flex;
   padding:10px ;
   margin: 15px;
 }
-
 .left-block,
 .right-block {
   flex: 1 1 auto;
@@ -101,21 +93,17 @@ h1{
   margin-left: 20px;
   padding: 10px;
 }
-
 .right-block {
   background-color:white;
   word-wrap: break-word;
   margin-right: 20px;
   margin-left: 20px;
   padding: 10px;
-
 }
-
 @media screen and (max-width:730px) {
   .container ,
   .navigation{
     flex-direction: column;
-
   }
 }
 @media screen and (max-width: 500px) {
@@ -129,7 +117,6 @@ h1{
     padding:5% 0px ;
   }
 }
-
 footer{
   /* text-align: center; */
   bottom:0;
