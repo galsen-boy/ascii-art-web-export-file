@@ -12,6 +12,7 @@ func error400(w http.ResponseWriter) {
 	if err != nil {
 		log.Fatalln(err)
 	}
+	w.WriteHeader(400)
 	tpl400.Execute(w, nil)
 }
 
@@ -21,6 +22,7 @@ func error404(w http.ResponseWriter) {
 	if err != nil {
 		log.Fatalln(err)
 	}
+	w.WriteHeader(404)
 	tpl404.Execute(w, nil)
 }
 
@@ -30,6 +32,7 @@ func error500(w http.ResponseWriter) {
 	if err != nil {
 		log.Fatalln(err)
 	}
+	w.WriteHeader(500)
 	tpl500.Execute(w, nil)
 }
 
@@ -39,5 +42,6 @@ func error405(w http.ResponseWriter) {
 	if err != nil {
 		log.Fatalln(err)
 	}
+	w.WriteHeader(405)
 	tpl405.Execute(w, nil)
 }
