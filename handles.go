@@ -1,14 +1,17 @@
 package main
 
 import (
-
 	"io"
 	"net/http"
 	"os"
 	"strconv"
 	"text/template"
 )
-var check1,check2 bool
+
+var out string
+
+var check1, check2 bool
+
 // Starting to find the html page
 func StartPage(res http.ResponseWriter, req *http.Request) {
 	if req.URL.Path != "/" || req.Method != "GET" {
@@ -28,9 +31,9 @@ func StartPage(res http.ResponseWriter, req *http.Request) {
 // Form data after submiting
 
 func SubmitTing(res http.ResponseWriter, req *http.Request) {
-	
-	if req.FormValue("sub")=="sub" {
-		check1=true
+
+	if req.FormValue("sub") == "sub" {
+		check1 = true
 	}
 	if req.Method != "POST" {
 		error405(res)
@@ -89,67 +92,74 @@ func SubmitTing(res http.ResponseWriter, req *http.Request) {
 	res.WriteHeader(200)
 	tpl.Execute(res, ConvertStr(txt, ban))
 
-	out := ConvertStr(txt, ban)
+	out = ConvertStr(txt, ban)
 
 	// Afficher le résultat dans le template
 	// res.WriteHeader(200)
-	tpl.Execute(res, out)
+	// tpl.Execute(res, out)
+
+}
+
+func download(res http.ResponseWriter, req *http.Request) {
+
 	data := os.MkdirAll("data", 0755)
 	if data != nil {
 		error500(res)
 		return
 	}
 	// Enregistrer le texte ASCII dans un fichier
-	data = os.WriteFile("./data/result.txt", []byte(out), 0644)
-	if data != nil {
-		error500(res)
-		return
-	}
-	data = os.WriteFile("./data/result.doc", []byte(out), 0644)
-	if data != nil {
-		error500(res)
-		return
+	if req.FormValue("fileformat") == "txt" {
+		data = os.WriteFile("./data/result.txt", []byte(out), 0644)
+		if data != nil {
+			error500(res)
+			return
+		}
 	}
 
-}
+	if req.FormValue("fileformat") == "doc" {
+		data = os.WriteFile("./data/result.doc", []byte(out), 0644)
+		if data != nil {
+			error500(res)
+			return
+		}
 
-func download(res http.ResponseWriter, req *http.Request) {
-
-	if req.FormValue("telecharge")=="telecharge"{
-		check2=true
 	}
-	if check1 && check2{
 
-	formatType := req.FormValue("fileformat")
-
-	filename := "./data/result." + formatType
-
-	// Ouvrir le fichier à télécharger
-	f, err := os.Open(filename)
-	if err != nil {
-		error500(res)
-		return
+	if req.FormValue("telecharge") == "telecharge" {
+		check2 = true
 	}
-	defer f.Close()
+	if check1 && check2 {
 
-	// Récupérer les informations sur le fichier
-	fileInfo, err := f.Stat()
-	if err != nil {
-		error500(res)
-		return
-	}
-	fileSize := fileInfo.Size()
+		formatType := req.FormValue("fileformat")
 
-	// Définition des en-têtes
-	res.Header().Set("Content-Disposition", "attachment; filename=result."+formatType)
-	res.Header().Set("Content-Type", "text/plain")
-	res.Header().Set("Content-Length", strconv.FormatInt(fileSize, 10))
-	f.Seek(0, io.SeekStart)
-	// Transmission du contenu du fichier
-	io.Copy(res, f)
-	}else{
+		filename := "./data/result." + formatType
+
+		// Ouvrir le fichier à télécharger
+		f, err := os.Open(filename)
+		if err != nil {
+			error500(res)
+			return
+		}
+		defer f.Close()
+
+		// Récupérer les informations sur le fichier
+		fileInfo, err := f.Stat()
+		if err != nil {
+			error500(res)
+			return
+		}
+		fileSize := fileInfo.Size()
+
+		// Définition des en-têtes
+		res.Header().Set("Content-Disposition", "attachment; filename=result."+formatType)
+		res.Header().Set("Content-Type", "text/plain")
+		res.Header().Set("Content-Length", strconv.FormatInt(fileSize, 10))
+		f.Seek(0, io.SeekStart)
+		// Transmission du contenu du fichier
+		io.Copy(res, f)
+	} else {
 		error400(res)
 	}
-	check1=false
-	check2=false
+	check1 = false
+	check2 = false
 }
