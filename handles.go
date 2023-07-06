@@ -1,14 +1,14 @@
 package main
 
 import (
-	"strconv"
+
 	"io"
-	"os"
 	"net/http"
+	"os"
+	"strconv"
 	"text/template"
 )
-var check1 bool
-var check2 bool
+var check1,check2 bool
 // Starting to find the html page
 func StartPage(res http.ResponseWriter, req *http.Request) {
 	if req.URL.Path != "/" || req.Method != "GET" {
@@ -26,48 +26,73 @@ func StartPage(res http.ResponseWriter, req *http.Request) {
 }
 
 // Form data after submiting
+
 func SubmitTing(res http.ResponseWriter, req *http.Request) {
+	
 	if req.FormValue("sub")=="sub" {
 		check1=true
 	}
-	
 	if req.Method != "POST" {
 		error405(res)
 		return
 	}
-
 	if req.URL.Path != "/ascii-art" {
 		error404(res)
 		return
 	}
-
-	tpl, er := template.ParseFiles("./templates/home.page.tmpl")
-	if er != nil {
-		error500(res)
-		return
-	}
-
+	tpl, err := template.ParseFiles("./templates/home.page.tmpl")
 	req.ParseForm()
-
 	if req.FormValue("banner") != "standard" &&
 		req.FormValue("banner") != "thinkertoy" &&
-		req.FormValue("banner") != "shadow" {
+		req.FormValue("banner") != "shadow" || err != nil {
 		error500(res)
 		return
 	}
 
 	txt := req.FormValue("input")
 	ban := req.FormValue("banner")
+	i, _ := os.ReadFile(ban + ".txt")
+	if ban == "shadow" {
+		if len(i) != 7463 {
+			error500(res)
+			return
+		}
+	}
+	if ban == "standard" {
+		if len(i) != 26488 {
+			error500(res)
+			return
+		}
+	}
+	if ban == "thinkertoy" {
+		if len(i) != 4703 {
+			error500(res)
+			return
+		}
+	}
 
-	if !isPrintable(txt) {
+	_, err = os.ReadFile(ban + ".txt")
+	if err != nil {
+		error500(res)
+		return
+	}
+	// isValid find if there an anpritable caracter
+	if !isValid(txt) {
 		error400(res)
 		return
 	}
+	if err != nil {
+		// log.Fatalln(err)
+		error500(res)
+		return
+	}
+	res.WriteHeader(200)
+	tpl.Execute(res, ConvertStr(txt, ban))
 
 	out := ConvertStr(txt, ban)
 
 	// Afficher le résultat dans le template
-	res.WriteHeader(200)
+	// res.WriteHeader(200)
 	tpl.Execute(res, out)
 	data := os.MkdirAll("data", 0755)
 	if data != nil {
@@ -80,23 +105,21 @@ func SubmitTing(res http.ResponseWriter, req *http.Request) {
 		error500(res)
 		return
 	}
-	data = os.WriteFile("./data/result.exe", []byte(out), 0644)
+	data = os.WriteFile("./data/result.doc", []byte(out), 0644)
 	if data != nil {
 		error500(res)
 		return
 	}
-	data = os.WriteFile("./data/result.pdf", []byte(out), 0644)
-	if data != nil {
-		error500(res)
-		return
-	}
+
 }
 
 func download(res http.ResponseWriter, req *http.Request) {
-	if req.FormValue("telecharge")=="telecharge" {
+
+	if req.FormValue("telecharge")=="telecharge"{
 		check2=true
 	}
-	if check1 && check2 {
+	if check1 && check2{
+
 	formatType := req.FormValue("fileformat")
 
 	filename := "./data/result." + formatType
@@ -127,5 +150,6 @@ func download(res http.ResponseWriter, req *http.Request) {
 	}else{
 		error400(res)
 	}
+	check1=false
+	check2=false
 }
-

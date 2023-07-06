@@ -3,112 +3,73 @@
  <img width=200px height=200px src="https://2.bp.blogspot.com/-TE6BeG_plRs/UaXyQ85xv2I/AAAAAAAAA5Y/sYgXHIvdF3E/s1600/Itachi_Text_Art.jpg" alt="Project logo"></a>
 </p>
 
-<h3 align="center">Project Title</h3>
-
-<div align="center">
-
-[![Status](https://img.shields.io/badge/status-active-success.svg)]()
-[![GitHub Issues](https://img.shields.io/github/issues/kylelobo/The-Documentation-Compendium.svg)](https://github.com/kylelobo/The-Documentation-Compendium/issues)
-[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/kylelobo/The-Documentation-Compendium.svg)](https://github.com/kylelobo/The-Documentation-Compendium/pulls)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
-
-</div>
-
+<h3 align="center">ASCII ART WEB STYLIZE</h3>
 ---
-
-<p align="center"> Few lines describing your project.
+<p align="center"> This project help to run ascii art on server
     <br> 
 </p>
 
 ## 📝 Table of Contents
 
 - [About](#about)
-- [Getting Started](#getting_started)
-- [Deployment](#deployment)
 - [Usage](#usage)
-- [Built Using](#built_using)
-- [TODO](https://learn.zone01dakar.sn/git/root/public/src/branch/master/subjects/ascii-art-web)
-- [Contributing](../CONTRIBUTING.md)
+- [Description](https://learn.zone01dakar.sn/git/root/public/src/branch/master/subjects/ascii-art-web/stylize)
 - [Authors](#authors)
-- [Acknowledgments](#acknowledgement)
+- [Implementation details](#built_using)
 
 ## 🧐 About <a name = "about"></a>
 
-Write about 1-2 paragraphs describing the purpose of your project.
+Ascii-art-web consists in creating and running a server, in which it will be possible to use a web GUI (graphical user interface) version of your last project, ascii-art.
+Ascii-art-stylize consists on making your site :
 
-## 🏁 Getting Started <a name = "getting_started"></a>
+    more appealing, interactive and intuitive.
+    more user friendly.
+    give more feedback to the user.
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See [deployment](#deployment) for notes on how to deploy the project on a live system.
 
-### Prerequisites
+###  Description
 
-What things you need to install the software and how to install them.
+Instructions
 
-```
-Give examples
-```
+    Your project must contain CSS.
+    The code must respect the good practices.
+    We suggest that you search for the principles of a good website design.
+    It must be possible to see the text properly regardless of the colors used.
+    The website must be consistent, responsive and interactive.
 
-### Installing
+Allowed packages
 
-A step by step series of examples that tell you how to get a development env running.
+    Only the standard go packages are allowed
 
-Say what the step will be
+This project will help you learn about:
 
-```
-Give the example
-```
+    The basics of human-computer interface.
+    The basics of CSS.
+    Linking CSS and HTML.
 
-And repeat
 
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo.
-
-## 🔧 Running the tests <a name = "tests"></a>
-
-Explain how to run the automated tests for this system.
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## 🎈 Usage <a name="usage"></a>
-
-Add notes about how to use the system.
-
-## 🚀 Deployment <a name = "deployment"></a>
-
-Add additional notes about how to deploy this on a live system.
-
-## ⛏️ Built Using <a name = "built_using"></a>
-
-- [MongoDB](https://www.mongodb.com/) - Database
-- [Express](https://express.com/) - Server Framework
-- [Vue](https://vue.org/) - Web Framework
-- [Node](https://node.org/en/) - Server Environment
 
 ## ✍️ Authors <a name = "authors"></a>
 
-- [@kylelobo](https://github.com/kylelobo) - Idea & Initial work
+Author: MOURIDE ZONE 01 COPYRIGHT
 
-See also the list of [contributors](https://github.com/kylelobo/The-Documentation-Compendium/contributors) who participated in this project.
+ymadike
+daiba
+ndiba
 
-## 🎉 Acknowledgements <a name = "acknowledgement"></a>
+## 🎈 Usage <a name="usage"></a>
 
-- Hat tip to anyone whose code was used
-- Inspiration
-- References
+To run this project you to do :
+- copy that command to start the server
+```
+go run .
+```
+After that we gonna tape formuler and submit it to see haw does it work
+
+## ⛏️ Implementation details <a name = "built_using"></a>
+
+- [Golang](https://go.dev/) - for the back end we use golang
+- [Html](https://developer.mozilla.org/fr/docs/Web/HTML) - for the front end
+- [Css](https://developer.mozilla.org/fr/docs/Web/CSS) - for style
+
+that all for this project 

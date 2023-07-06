@@ -34,30 +34,18 @@ func ConvertStr(str, banner string) string {
 				newStr += "\n"
 
 			}
-		} else if j != len(str)-1 && args != "\r" {
+		} else if j != len(str)-1 && args != "\n" {
 			newStr += "\n"
 		}
 	}
+	// fmt.Println(newStr)
 	return newStr
 }
-
-
 func isValid(s string) bool {
-	str :=[]rune(s)
-	for _, ch := range str {
-		if ch < ' ' || ch != 10 || ch != '\r' || ch > '~' {
+	for _, ch := range s {
+		if ch < ' ' && ch != 10 && ch != '\r' || ch > '~' {
 			return false
 		}
 	}
 	return true
-}
-func isPrintable(s string) bool{
-	str:=[]rune(s)
-	for _,ch := range str {
-		if ch>=32 && ch <=125{
-			return true
-		}
-		
-	}
-	return false
 }
