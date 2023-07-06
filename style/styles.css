@@ -20,7 +20,7 @@ textarea {
   resize: none;
 }
 button{
-  width: 13%;
+  width: 40%;
   padding: 8px;
   white-space: nowrap;
   overflow: hidden;
@@ -28,8 +28,14 @@ button{
   background-color: gray;
   border-radius:4px;
 }
+.btn{
+  display: flex;
+  width: 45%;
+  justify-content: center;
+  margin-left: 28%;
+}
 select{
-  width:27%;
+  width:35%;
   padding: 8px;
 }
 .navigation {
@@ -56,8 +62,6 @@ select{
 .menu li a {
   text-decoration:double; /* Supprime la décoration de lien par défaut */
   color: #000; /* Définit la couleur du texte pour les liens */
-  font-size: medium;
-
 }
 h1{
   margin: 0;
@@ -107,19 +111,25 @@ h1{
 
 }
 
-@media screen and (max-width:400px) {
+@media screen and (max-width:730px) {
   .container ,
   .navigation{
     flex-direction: column;
 
   }
 }
-/* @media screen and (max-width: 730px) {
-  .navigation {
-    flex-direction: column;
-
+@media screen and (max-width: 500px) {
+  .btn ,
+  select,
+  textarea{
+    width: 100%;
+    margin-left:0px;
   }
-} */
+  textarea {
+    padding:5% 0px ;
+  }
+}
+
 footer{
   /* text-align: center; */
   bottom:0;
